@@ -39,15 +39,15 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      // const res = await axios.post("http://localhost:8080/api/users/login", {
-      //   email,
-      //   password,
-      // });
-      const baseURL = import.meta.env.VITE_API_URL;
-const res = await axios.post(`${baseURL}/api/users/login`, {
-  email,
-  password,
-});
+      const res = await axios.post("http://localhost:8080/api/users/login", {
+        email,
+        password,
+      });
+//       const baseURL = import.meta.env.VITE_API_URL;
+// const res = await axios.post(`${baseURL}/api/users/login`, {
+//   email,
+//   password,
+// });
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err) {
