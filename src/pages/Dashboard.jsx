@@ -52,7 +52,7 @@ function Dashboard() {
       <header className="dashboard-header">
         <div style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
           <img src="/logo.jpg" alt="IOCL Logo" className="logo" />
-          <h1>Indian Oil - Barauni News</h1>
+          <h1>Indian Oil - Barauni</h1>
         </div>
         <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </header>
