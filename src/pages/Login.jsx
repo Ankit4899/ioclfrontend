@@ -37,24 +37,40 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      // const res = await axios.post("http://localhost:8080/api/users/login", {
-      //   email,
-      //   password,
-      // });
-      const baseURL = import.meta.env.VITE_API_URL;
-const res = await axios.post(`${baseURL}/api/users/login`, {
-  email,
-  password,
-});
+//   const handleLogin = async () => {
+//     try {
+//       // const res = await axios.post("http://localhost:8080/api/users/login", {
+//       //   email,
+//       //   password,
+//       // });
+//       const baseURL = import.meta.env.VITE_API_URL;
+// const res = await axios.post(`${baseURL}/api/users/login`, {
+//   email,
+//   password,
+// });
       
-      localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
-    } catch (err) {
-      alert("Login failed");
-    }
-  };
+//       localStorage.setItem("token", res.data.token);
+//       navigate("/dashboard");
+//     } catch (err) {
+//       alert("Login failed");
+//     }
+//   };
+const handleLogin = async () => {
+  try {
+    const baseURL = import.meta.env.VITE_API_URL;
+    const res = await axios.post(`${baseURL}/api/users/login`, {
+      email,
+      password,
+    });
+
+    console.log("Login response:", res.data);
+    localStorage.setItem("token", res.data.token);
+    navigate("/dashboard");
+  } catch (err) {
+    console.error("Login error:", err.response?.data || err.message);
+    alert("Login failed: " + (err.response?.data?.message || "Check console"));
+  }
+};
 
   return (
     <div
